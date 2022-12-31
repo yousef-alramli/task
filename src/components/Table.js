@@ -18,14 +18,17 @@ const Table = () => {
 
     useEffect(() => {
         getData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
         handleFiltration()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data, query])
 
     useEffect(() => {
         handlePageList()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filteredData])
 
     const handlePageList = () => {
@@ -91,33 +94,35 @@ const Table = () => {
     return (
         <div>
             <SearchBar actionTypes={actionTypes} applicationTypes={applicationTypes} />
-
-            <table className='data-table'>
-                <thead>
-                    <tr className='table-row'>
-                        <th className='table-col'>Log ID</th>
-                        <th className='table-col'>Application Type</th>
-                        <th className='table-col'>Application ID</th>
-                        <th className='table-col'>Action</th>
-                        <th className='table-col'>Action Details</th>
-                        <th className='table-col date'>Date : Time</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    {pageData.map(item => (
-                        <tr key={item.logId} className='table-row'>
-                            <td className='table-col'>{item.logId}</td>
-                            <td className='table-col'>{item.applicationType}</td>
-                            <td className='table-col'>{item.applicationId || emptyData()}</td>
-                            <td className='table-col'>{item.actionType}</td>
-                            <td className='table-col'>{emptyData()}</td>
-                            <td className='table-col'>{item.creationTimestamp.replace(' ', ' / ')}</td>
+            <div className='full-table'>
+                <table className='data-table'>
+                    <thead>
+                        <tr className='table-row'>
+                            <th className='table-col'>Log ID</th>
+                            <th className='table-col'>Application Type</th>
+                            <th className='table-col'>Application ID</th>
+                            <th className='table-col'>Action</th>
+                            <th className='table-col'>Action Details</th>
+                            <th className='table-col date'>Date : Time</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-            <Pagination selectedPage={selectedPage} setSelectedPage={setSelectedPage} numberOfPages={numberOfPages} />
+                    </thead>
+
+                    <tbody>
+                        {pageData.map(item => (
+                            <tr key={item.logId} className='table-row'>
+                                <td className='table-col'>{item.logId}</td>
+                                <td className='table-col'>{item.applicationType}</td>
+                                <td className='table-col'>{item.applicationId || emptyData()}</td>
+                                <td className='table-col'>{item.actionType}</td>
+                                <td className='table-col'>{emptyData()}</td>
+                                <td className='table-col'>{item.creationTimestamp.replace(' ', ' / ')}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                <Pagination selectedPage={selectedPage} setSelectedPage={setSelectedPage} numberOfPages={numberOfPages} />
+            </div>
+
         </div>
     )
 }

@@ -1,22 +1,28 @@
 @import 'variables';
 
-.data-table {
-    width: 100%;
-    .table-row {
-        border-bottom: 1px solid $blue-light;
-    }
+.full-table {
+    margin: 20px 0;
+    box-shadow: 0px 0px 10px $gray-300;
 
-    .table-col {
-        text-align: left;
-        padding: 25px;
-        width: 12%;
+    .data-table {
+        width: 100%;
 
-        &.date {
-            width: 40%;
+        .table-row {
+            border-bottom: 1px solid $blue-light;
         }
-    }
 
-    .empty-data {
-        color: $blue-gray;
+        .table-col {
+            text-align: left;
+            padding: 25px;
+            width: 12%;
+
+            &.date {
+                width: 40%;
+            }
+        }
+
+        .empty-data {
+            color: $blue-gray;
+        }
     }
 }

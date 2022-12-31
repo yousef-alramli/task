@@ -15,10 +15,12 @@ const Pagination = ({ numberOfPages, selectedPage, setSelectedPage }) => {
         // if there's page param then will change the page
         const page = query.get('page')
         page && setSelectedPage(Number(page))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [query, numberOfPages])
 
     useEffect(() => {
         handlePagination()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedPage, numberOfPages])
 
 
@@ -51,7 +53,6 @@ const Pagination = ({ numberOfPages, selectedPage, setSelectedPage }) => {
             {selectedPage > 1 && <HiChevronLeft color='#68737d' onClick={() => handleSelectPage(selectedPage - 1)} />}
             {Array(NumberOfPagesShown).fill('').map((item, index) => {
                 const pageNum = index + firstNumber
-                // console.log('pageNum: ', firstNumber);
                 return (
                     <div key={pageNum} className={`page-number-holder ${pageNum === selectedPage && 'selected'}`} onClick={() => handleSelectPage(pageNum)}>
                         <p className='page-number'>{pageNum}</p>

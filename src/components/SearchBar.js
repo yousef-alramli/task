@@ -8,7 +8,6 @@ const SearchBar = ({ actionTypes, applicationTypes }) => {
     const [applicationType, setApplicationType] = useState('')
     const [fromDate, setFromDate] = useState('')
     const [toDate, setToDate] = useState('')
-    const [selectDate, setSelectDate] = useState('')
     const [applicationId, setApplicationId] = useState('')
 
     const [query, setQuery] = useSearchParams();
@@ -19,7 +18,7 @@ const SearchBar = ({ actionTypes, applicationTypes }) => {
     }
 
     const validateDates = (fromDate, toDate) => {
-        if (!fromDate && toDate || fromDate && !toDate) {
+        if ((!fromDate && toDate) || (fromDate && !toDate)) {
             alert('You must add both dates (from date and to date) or none of them')
             return false
         }
@@ -37,13 +36,12 @@ const SearchBar = ({ actionTypes, applicationTypes }) => {
         if (!validateDates(fromDate, toDate)) {
             return
         }
-        
+
         logId ? handlePushParams('logId', logId) : query.delete('logId')
         actionType ? handlePushParams('actionType', actionType) : query.delete('actionType')
         applicationType ? handlePushParams('applicationType', applicationType) : query.delete('applicationType')
         fromDate ? handlePushParams('fromDate', fromDate) : query.delete('fromDate')
         toDate ? handlePushParams('toDate', toDate) : query.delete('toDate')
-        selectDate ? handlePushParams('selectDate', selectDate) : query.delete('selectDate')
         applicationId ? handlePushParams('applicationId', applicationId) : query.delete('applicationId')
 
         handlePushParams('page', 1)
@@ -107,15 +105,6 @@ const SearchBar = ({ actionTypes, applicationTypes }) => {
                     onChange={(e) => setToDate(e.target.value)}
                     className='search-input'
                     placeholder='Select Date'
-                />
-            </div>
-
-            <div className='input-holder'>
-                <label className='search-label'>Select date</label>
-                <input
-                    value={selectDate}
-                    onChange={(e) => setSelectDate(e.target.value)}
-                    className='search-input'
                 />
             </div>
 

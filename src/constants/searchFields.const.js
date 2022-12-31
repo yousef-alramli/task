@@ -4,6 +4,5 @@ export const searchFields = [
     'applicationType',
     'fromDate',
     'toDate',
-    'selectDate',
     'applicationId'
 ]
