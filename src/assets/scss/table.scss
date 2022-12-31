@@ -1,0 +1,22 @@
+@import 'variables';
+
+.data-table {
+    width: 100%;
+    .table-row {
+        border-bottom: 1px solid $blue-light;
+    }
+
+    .table-col {
+        text-align: left;
+        padding: 25px;
+        width: 12%;
+
+        &.date {
+            width: 40%;
+        }
+    }
+
+    .empty-data {
+        color: $blue-gray;
+    }
+}
